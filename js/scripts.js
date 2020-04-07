@@ -101,6 +101,9 @@ $(document).ready(function() {
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
     $("input#new-phone-number").val("");
+    $('input#newEmail').val('');
+    $('input#addressLine1').val('');
+    $('input#addressLine2').val('');
     var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmail, inputtedAddressLine1, inputtedAdressLine2);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);
