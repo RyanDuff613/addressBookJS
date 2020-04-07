@@ -38,12 +38,12 @@ AddressBook.prototype.deleteContact = function(id) {
 }
 
 // Business Logic for Contacts ---------
-function Contact(firstName, lastName, phoneNumber, email, addressLine1, addressLine2) {
-  this.firstName = firstName
-  this.lastName = lastName
-  this.phoneNumber = phoneNumber
-  this.email = email
-  this.addressLine1 = addressLine1
+function Contact(firstName, lastName, phoneNumber, workEmail,personalEmail,altEmail, addressLine1, addressLine2) {
+  this.firstName = firstName,
+  this.lastName = lastName,
+  this.phoneNumber = phoneNumber,
+  this.email = [workEmail, personalEmail, altEmail]
+  this.addressLine1 = addressLine1,
   this.addressLine2 = addressLine2
 }
 
@@ -95,16 +95,20 @@ $(document).ready(function() {
     var inputtedFirstName = $("input#new-first-name").val();
     var inputtedLastName = $("input#new-last-name").val();
     var inputtedPhoneNumber = $("input#new-phone-number").val();
-    var inputtedEmail = $('input#newEmail').val();
+    var inputtedWorkEmail = $('input#workEmail').val();
+    var inputtedPersonalEmail =$('input#personalEmail').val();
+    var inputtedAltEmail = $('input#altEmail').val();
     var inputtedAddressLine1 = $('input#addressLine1').val();
     var inputtedAdressLine2 = $('input#addressLine2').val();
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
     $("input#new-phone-number").val("");
-    $('input#newEmail').val('');
+    $('input#workEmail').val('');
+    $('input#personalEmail').val('');
+    $('input#altEmail').val('');
     $('input#addressLine1').val('');
     $('input#addressLine2').val('');
-    var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmail, inputtedAddressLine1, inputtedAdressLine2);
+    var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedWorkEmail,inputtedPersonalEmail,inputtedAltEmail, inputtedAddressLine1, inputtedAdressLine2);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);
   })
