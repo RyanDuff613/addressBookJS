@@ -4,6 +4,25 @@ function AddressBook(){
   this.currentId=0;
 }
 
+AddressBook.prototype.findContact = function(id){
+  for(var i=0; i<this.contacts.length; i++){
+    if (this.contacts[i].id === id){
+      return this.contacts[i];
+    }
+  };
+  return false;
+}
+
+AddressBook.prototype.deleteContact = function(id){
+  for(var i=0; i<this.contacts.length; i++){
+    if(this.contacts[i].id ===id){
+      delete this.contacts[i];
+      return true;
+    }
+  };
+  return false;
+}
+
 AddressBook.prototype.addContact = function(contact){
   this.contacts.push(contact);
 }
