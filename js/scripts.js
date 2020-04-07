@@ -49,7 +49,16 @@ Contact.prototype.fullName = function() {
 }
 
 // UI Logic -----------------------
-var addressbook1 = new AddressBook();
+var addressBook1 = new AddressBook();
+
+function displayContactDetails(addressBookToDisplay){
+  var contactsList =$('ul#contacts');
+  var htmlForContactInfo ='';
+  addressBookToDisplay.contacts.forEach(function(contact){
+    htmlForContactInfo += '<li id=' +contact.id+ '>'+contact.firstName+' '+contact.lastName + '</li>';
+  });
+  contactsList.html(htmlForContactInfo);
+};
 
 $(document).ready(function(){
   $('form#new-contact').submit(function(event){
@@ -58,7 +67,7 @@ $(document).ready(function(){
     var inputtedLastName = $('input#new-last-name').val();
     var inputtedPhoneNumber = $('input#newPhone').val();
     var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
-    addressbook1.addContact(newContact);
-    console.log(addressbook1.contacts);
+    addressBook1.addContact(newContact);
+    displayContactDetails(addressBook1);
   })
 })
