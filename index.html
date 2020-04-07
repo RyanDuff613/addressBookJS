@@ -8,6 +8,29 @@
     <title>Address Book</title>
   </head>
   <body>
+    <h1>Address Book</h1>
+    <h2>Add a contact:</h2>
+    <form id='new-contact'>
+      <label for="new-first-name">first name</label>
+      <input type="text" id="new-first-name">
+      <label for="new-last-name">last name</label>
+      <input type="text" id='new-last-name'>
+      <label for="newPhone">Phone:</label>
+      <input type="text" id="newPhone">
+      <button type="submit">add info</button>
+    </form>
+
+    <h2>contacts:</h2>
+    <ul id="contacts">
+    </ul>
+
+    <div id="show-contact">
+      <p>First Name:<span class='first-name'></span></p>
+      <p>Last Name:<span class="last-name"></span></p>
+      <p>Phone:<span class="phone-number"></span></p>
+      <div id="buttons">
+      </div>
+    </div>
     
   </body>
   </html>
