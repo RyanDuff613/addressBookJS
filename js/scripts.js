@@ -1,13 +1,23 @@
-//Business Logic for Address Book ----------------
-function AddressBook(){
+// Business Logic for AddressBook ---------
+function AddressBook() {
   this.contacts = [];
-  this.currentId=0;
+  this.currentId = 0;
 }
 
-AddressBook.prototype.findContact = function(id){
-  for(var i=0; i<this.contacts.length; i++){
-    if (this.contacts[i]){
-      if (this.contacts[i].id === id){
+AddressBook.prototype.addContact = function(contact) {
+  contact.id = this.assignId();
+  this.contacts.push(contact);
+}
+
+AddressBook.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
+}
+
+AddressBook.prototype.findContact = function(id) {
+  for (var i=0; i< this.contacts.length; i++) {
+    if (this.contacts[i]) {
+      if (this.contacts[i].id == id) {
         return this.contacts[i];
       }
     }
@@ -15,10 +25,10 @@ AddressBook.prototype.findContact = function(id){
   return false;
 }
 
-AddressBook.prototype.deleteContact = function(id){
-  for(var i=0; i<this.contacts.length; i++){
-    if (this.contacts[i]){
-      if(this.contacts[i].id ===id){
+AddressBook.prototype.deleteContact = function(id) {
+  for (var i=0; i< this.contacts.length; i++) {
+    if (this.contacts[i]) {
+      if (this.contacts[i].id == id) {
         delete this.contacts[i];
         return true;
       }
@@ -27,21 +37,13 @@ AddressBook.prototype.deleteContact = function(id){
   return false;
 }
 
-AddressBook.prototype.addContact = function(contact){
-  this.contacts.push(contact);
-}
-AddressBook.prototype.assignID=function(){
-  this.currentID += 1;
-  return this.currentID;
-}
-
-//Business Logic for Contacts -------------------
-function Contact(firstName,lastName,phoneNumber){
-  this.firstName =firstName;
-  this.lastName =lastName;
-  this.phoneNumber=phoneNumber;
+// Business Logic for Contacts ---------
+function Contact(firstName, lastName, phoneNumber) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.phoneNumber = phoneNumber;
 }
 
-Contact.prototype.fullName=function(){
-  return this.firstName + ' ' +this.lastName;
+Contact.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
 }
